@@ -1,6 +1,7 @@
 import typography from '@tailwindcss/typography';
 import forms from '@tailwindcss/forms';
 import aspectRatio from '@tailwindcss/aspect-ratio';
+import daisyui from 'daisyui';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -15,6 +16,7 @@ module.exports = {
     typography,
     forms,
     aspectRatio,
+    daisyui
   ],
 }
 
