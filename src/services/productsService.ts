@@ -23,7 +23,7 @@ export class ProductsService {
     return response.data.products;
   }
 
-  async getProduct(id: number): Promise<Product> {
+  async getProduct(id: string): Promise<Product> {
     const response = await axios.get(`${this.baseUrl}/${id}`);
     return response.data;
   }
