@@ -24,7 +24,7 @@ function removeProduct(product: Product) {
       </ul>
     </div>
 
-    <div class="text-center mt-2" v-if="items.length == 0">There are no items in the cart.</div>
+    <div class="text-center mt-2" v-if="items.length == 0">There are no products in the cart.</div>
 
     <div v-else>
       <div class="overflow-x-auto">
@@ -32,7 +32,7 @@ function removeProduct(product: Product) {
           <!-- head -->
           <thead>
             <tr>
-              <th>Item</th>
+              <th>Product</th>
               <th>Price</th>
               <th>Quantity</th>
               <th>Total</th>
@@ -107,7 +107,7 @@ function removeProduct(product: Product) {
       </div>
 
       <div class="flex flex-row-reverse mt-4">
-        <button class="btn btn-primary text-right">Checkout</button>
+        <RouterLink to="/checkout" class="btn btn-primary text-right">Checkout</RouterLink>
       </div>
     </div>
 
