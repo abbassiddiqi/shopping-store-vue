@@ -27,26 +27,22 @@ const { items, total } = storeToRefs(cartStore);
     <div class="flex gap-4 flex-col md:flex-row" v-else>
       <div class="md:w-[60%]">
 
-        <div class="card card-compact card-bordered rounded-lg">
+        <div class="card card-compact card-bordered rounded-lg shadow-sm">
           <div class="card-body">
             <h2 class="card-title">Shipping Details</h2>
             <form>
-              <div class="flex gap-4">
-                <div class="w-1/2">
-                  <div class="form-control mb-2">
-                    <label class="label">
-                      <span class="label-text">First Name</span>
-                    </label>
-                    <input type="text" placeholder="" class="input input-bordered" required />
-                  </div>
+              <div class="grid grid-cols-2 gap-4 max-sm:grid-cols-none max-sm:gap-2 mb-2">
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">First Name</span>
+                  </label>
+                  <input type="text" placeholder="" class="input input-bordered" required />
                 </div>
-                <div class="w-1/2">
-                  <div class="form-control mb-2">
-                    <label class="label">
-                      <span class="label-text">Last Name</span>
-                    </label>
-                    <input type="text" placeholder="" class="input input-bordered" required />
-                  </div>
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">Last Name</span>
+                  </label>
+                  <input type="text" placeholder="" class="input input-bordered" required />
                 </div>
               </div>
               <div class="form-control mb-2">
@@ -65,7 +61,7 @@ const { items, total } = storeToRefs(cartStore);
           </div>
         </div>
 
-        <div class="card card-compact card-bordered rounded-lg mt-4">
+        <div class="card card-compact card-bordered rounded-lg mt-4 shadow-sm">
           <div class="card-body">
             <h2 class="card-title">Payment Information</h2>
             <form>
@@ -81,22 +77,18 @@ const { items, total } = storeToRefs(cartStore);
                 </label>
                 <input type="text" placeholder="" class="input input-bordered" required />
               </div>
-              <div class="flex gap-4 mb-2">
-                <div class="w-1/2">
-                  <div class="form-control">
-                    <label class="label">
-                      <span class="label-text">Expiration Date</span>
-                    </label>
-                    <input type="month" placeholder="" class="input input-bordered" required />
-                  </div>
+              <div class="grid grid-cols-2 gap-4 max-sm:grid-cols-none max-sm:gap-2 mb-2">
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">Expiration Date</span>
+                  </label>
+                  <input type="month" placeholder="" class="input input-bordered" required />
                 </div>
-                <div class="w-1/2">
-                  <div class="form-control">
-                    <label class="label">
-                      <span class="label-text">CVV</span>
-                    </label>
-                    <input type="number" placeholder="" class="input input-bordered" required />
-                  </div>
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">CVV</span>
+                  </label>
+                  <input type="number" placeholder="" class="input input-bordered" required />
                 </div>
               </div>
             </form>
@@ -106,7 +98,7 @@ const { items, total } = storeToRefs(cartStore);
       </div>
       
       <div class="md:w-[40%]">
-        <div class="card card-compact card-bordered rounded-lg">
+        <div class="card card-compact card-bordered rounded-lg shadow-sm">
           <div class="card-body">
             <h2 class="card-title">Summary</h2>
             <div class="border-b-gray-200">
