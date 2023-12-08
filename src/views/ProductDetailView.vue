@@ -2,13 +2,16 @@
 import { computed, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
-const route = useRoute();
 
 import { useProductsStore } from '@/stores/products';
 import { useCartStore } from '@/stores/cart';
 import type { Product } from '@/services/productsService';
+import { useCurrencyFormatter } from '@/composables/currencyFormatter';
+
+const route = useRoute();
 const productsStore = useProductsStore();
 const cartStore = useCartStore();
+const currencyFormatter = useCurrencyFormatter();
 
 const { product } = storeToRefs(productsStore);
 const { items } = storeToRefs(cartStore);
@@ -64,7 +67,7 @@ const removeFromCart = (product: Product) => {
       <div>
         <h2 class="font-bold text-xl mb-2">{{ product.title }}</h2>
         
-        <p class="font-medium">${{ product.price }}</p>
+        <p class="font-medium">{{ currencyFormatter.format(product.price) }}</p>
         <p class="text-sm mt-4">{{ parseFloat(product.rating.toString()).toFixed(2) }} ★</p>
 
         <p class="mt-4 mb-4">{{ product.description }}</p>

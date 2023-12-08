@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
+
 import { useCartStore } from '@/stores/cart';
+import { useCurrencyFormatter } from '@/composables/currencyFormatter';
 
 const cartStore = useCartStore();
+const currencyFormatter = useCurrencyFormatter();
 
 const { items, total } = storeToRefs(cartStore);
 
@@ -114,14 +117,14 @@ const { items, total } = storeToRefs(cartStore);
                 <div class="flex-grow text-left px-2">
                   {{ item.product.title }}
                 </div>
-                <div class="text-right">${{ item.quantity * item.product.price }}</div>
+                <div class="text-right">{{ currencyFormatter.format(item.quantity * item.product.price) }}</div>
               </div>
             </div>
             <div class="divider my-0"></div>
             <div>
               <div class="flex mb-2 text-gray-600">
                 <div class="flex-grow">Subtotal</div>
-                <div>${{ total }}</div>
+                <div>{{ currencyFormatter.format(total) }}</div>
               </div>
               <div class="flex mb-2 text-gray-600">
                 <div class="flex-grow">Sales Tax</div>
@@ -129,7 +132,7 @@ const { items, total } = storeToRefs(cartStore);
               </div>
               <div class="flex font-bold">
                 <div class="flex-grow">Grand Total</div>
-                <div>${{ total }}</div>
+                <div>{{ currencyFormatter.format(total) }}</div>
               </div>
             </div>
           </div>

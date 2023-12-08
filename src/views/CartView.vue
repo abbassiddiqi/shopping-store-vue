@@ -3,8 +3,10 @@ import { storeToRefs } from 'pinia';
 
 import { useCartStore } from '@/stores/cart';
 import type { Product } from '@/services/productsService';
+import { useCurrencyFormatter } from '@/composables/currencyFormatter';
 
 const cartStore = useCartStore();
+const currencyFormatter = useCurrencyFormatter();
 
 const { items, total } = storeToRefs(cartStore);
 
@@ -60,7 +62,7 @@ function removeProduct(product: Product) {
                 </div>
               </td>
               <td>
-                ${{ item.product.price }}
+                {{ currencyFormatter.format(item.product.price) }}
               </td>
               <td>
                 <div class="flex items-center max-w-fit border border-gray-100 rounded-lg overflow-hidden">
@@ -70,7 +72,7 @@ function removeProduct(product: Product) {
                 </div>
               </td>
               <td class="font-medium">
-                ${{ item.product.price * item.quantity }}
+                {{ currencyFormatter.format(item.product.price * item.quantity) }}
               </td>
               <td class="text-right">
                 <button @click="removeProduct(item.product)" class="btn btn-circle btn-sm">
@@ -92,7 +94,7 @@ function removeProduct(product: Product) {
             <!-- row 1 -->
             <tr>
               <th class="font-medium">Subtotal:</th>
-              <td class="text-right">${{ total }}</td>
+              <td class="text-right">{{ currencyFormatter.format(total) }}</td>
             </tr>
             <tr>
               <th class="font-medium">Sales Tax:</th>
@@ -100,7 +102,7 @@ function removeProduct(product: Product) {
             </tr>
             <tr>
               <th class="font-medium text-lg">Grand total:</th>
-              <td class="font-medium text-lg text-right">${{ total }}</td>
+              <td class="font-medium text-lg text-right">{{ currencyFormatter.format(total) }}</td>
             </tr>
           </tbody>
         </table>

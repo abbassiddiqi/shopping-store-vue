@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
 import type { Product } from '@/services/productsService';
+import { useCurrencyFormatter } from '@/composables/currencyFormatter';
 
 defineProps<{
   product: Product
 }>();
+
+const currencyFormatter = useCurrencyFormatter();
+
+console.log(currencyFormatter.format(5462));
 
 </script>
 
@@ -22,7 +27,7 @@ defineProps<{
     <div class="p-4">
       <RouterLink :to="`/products/${product.id}`" class="font-medium mb-2 overflow-hidden text-ellipsis whitespace-nowrap">{{ product.title }}</RouterLink>
       <div class="flex justify-between items-center text-gray-600">
-        <span class="">${{ product.price }}</span>
+        <span class="">{{ currencyFormatter.format(product.price) }}</span>
         <span class="text-sm">{{ parseFloat(product.rating.toString()).toFixed(2) }} ★</span>
       </div>
     </div>
