@@ -22,4 +22,6 @@ export const useProductsStore = defineStore('products', () => {
     fetchProduct,
     fetchProducts,
   }
+}, {
+  persist: true
 });

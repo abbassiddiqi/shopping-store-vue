@@ -40,4 +40,6 @@ export const useCartStore = defineStore('cart', () => {
     addToCart,
     removeFromCart,
   }
+}, {
+  persist: true
 });
