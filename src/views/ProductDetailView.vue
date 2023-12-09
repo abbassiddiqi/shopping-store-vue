@@ -7,6 +7,7 @@ import { useProductsStore } from '@/stores/products';
 import { useCartStore } from '@/stores/cart';
 import type { Product } from '@/services/productsService';
 import { useCurrencyFormatter } from '@/composables/currencyFormatter';
+import QuantityButton from '@/components/QuantityButton.vue';
 
 const route = useRoute();
 const productsStore = useProductsStore();
@@ -16,14 +17,22 @@ const currencyFormatter = useCurrencyFormatter();
 const { product } = storeToRefs(productsStore);
 const { items } = storeToRefs(cartStore);
 const id = route.params.id as string;
+const productId = parseInt(id);
 
 let isLoading = ref(false);
 
 const isInCart = computed(() => {
   return items.value.some(item => {
-    return item.productId == parseInt(id);
+    return item.productId == productId;
   })
 });
+
+const cartItem = computed(() => {
+  return items.value.find(item => {
+    if (item.productId == productId) return true;
+    return false;
+  });
+})
 
 
 onMounted(async () => {
@@ -38,6 +47,14 @@ const addToCart = (product: Product) => {
 
 const removeFromCart = (product: Product) => {
   cartStore.removeFromCart(product);
+}
+
+const handleIncrement = () => {
+  cartStore.increaseQuantity(productId);
+}
+
+const handleDecrement = () => {
+  cartStore.decreaseQuantity(productId);
 }
 
 </script>
@@ -72,8 +89,14 @@ const removeFromCart = (product: Product) => {
 
         <p class="mt-4 mb-4">{{ product.description }}</p>
         
-        <button v-if="isInCart" class="btn" @click="removeFromCart(product)">Remove from Cart</button>
-        <button v-else class="btn" @click="addToCart(product)">Add to Cart</button>
+        <div class="flex items-center">
+          <div>
+            <QuantityButton class="mr-4" v-if="isInCart" :quantity="cartItem?.quantity || 0" @increment="handleIncrement" @decrement="handleDecrement" />
+          </div>
+          <button v-if="isInCart" class="btn" @click="removeFromCart(product)">Remove from Cart</button>
+          <button v-else class="btn" @click="addToCart(product)">Add to Cart</button>
+        </div>
+        
       </div>
 
     </div>

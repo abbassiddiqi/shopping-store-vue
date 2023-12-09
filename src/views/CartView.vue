@@ -4,6 +4,7 @@ import { storeToRefs } from 'pinia';
 import { useCartStore } from '@/stores/cart';
 import type { Product } from '@/services/productsService';
 import { useCurrencyFormatter } from '@/composables/currencyFormatter';
+import QuantityButton from '@/components/QuantityButton.vue';
 
 const cartStore = useCartStore();
 const currencyFormatter = useCurrencyFormatter();
@@ -12,6 +13,14 @@ const { items, total } = storeToRefs(cartStore);
 
 function removeProduct(product: Product) {
   cartStore.removeFromCart(product);
+}
+
+const handleIncrement = (productId: number) => {
+  cartStore.increaseQuantity(productId);
+}
+
+const handleDecrement = (productId: number) => {
+  cartStore.decreaseQuantity(productId);
 }
 
 </script>
@@ -65,11 +74,7 @@ function removeProduct(product: Product) {
                 {{ currencyFormatter.format(item.product.price) }}
               </td>
               <td>
-                <div class="flex items-center max-w-fit border border-gray-100 rounded-lg overflow-hidden">
-                  <button class="btn btn-sm h-9 w-9 btn-square rounded-none">-</button>
-                  <span class="w-full text-center px-4 ">{{ item.quantity }}</span>
-                  <button class="btn btn-sm h-9 w-9 btn-square rounded-none">+</button>
-                </div>
+                <QuantityButton :quantity="item.quantity" @increment="handleIncrement(item.productId)" @decrement="handleDecrement(item.productId)" />
               </td>
               <td class="font-medium">
                 {{ currencyFormatter.format(item.product.price * item.quantity) }}

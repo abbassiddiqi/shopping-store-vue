@@ -34,11 +34,33 @@ export const useCartStore = defineStore('cart', () => {
     });
   }
 
+  const increaseQuantity = (productId: number): void => {
+    const targetItem = items.value.find((item) => {
+      if (item.productId == productId) return true;
+      return false;
+    });
+    if (targetItem) {
+      targetItem.quantity++;
+    }
+  }
+
+  const decreaseQuantity = (productId: number): void => {
+    const targetItem = items.value.find((item) => {
+      if (item.productId == productId) return true;
+      return false;
+    });
+    if (targetItem) {
+      targetItem.quantity--;
+    }
+  }
+
   return {
     total,
     items,
     addToCart,
     removeFromCart,
+    increaseQuantity,
+    decreaseQuantity,
   }
 }, {
   persist: true
