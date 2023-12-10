@@ -72,7 +72,7 @@ const handleDecrement = () => {
 
     <div class="flex justify-center p-8" v-if="isLoading"><span class="loading loading-spinner loading-lg"></span></div>
 
-    <div class="grid grid-cols-2 gap-8 max-md:grid-cols-none" v-if="product && !isLoading">
+    <div class="grid gap-8 grid-cols-1 md:grid-cols-2" v-if="product && !isLoading">
 
       <div class="flex justify-center items-center relative">
         <img class="max-h-96" :src="product.images[0]" v-if="product.images.length > 0" alt="Product Image" />

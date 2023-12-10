@@ -54,7 +54,7 @@ const handleDecrement = (productId: number) => {
 
             <tr v-for="item of items" :key="item.productId">
               <td>
-                <div class="flex items-center gap-3 min-w-[240px]">
+                <div class="flex items-center gap-3 min-w-[230px]">
                   <div class="avatar">
                     <div class="mask mask-square w-12 h-12">
                       <RouterLink :to="`/products/${item.productId}`">
@@ -64,7 +64,7 @@ const handleDecrement = (productId: number) => {
                   </div>
                   <div>
                     <RouterLink :to="`/products/${item.productId}`" class="mb-2">
-                      <div class="font-bold line-clamp-1">{{ item.product.title }}</div>
+                      <div class="font-bold line-clamp-2">{{ item.product.title }}</div>
                       <div class="text-sm opacity-50">{{ item.product.category }}</div>
                     </RouterLink>
                   </div>
