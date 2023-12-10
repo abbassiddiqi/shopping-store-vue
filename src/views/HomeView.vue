@@ -32,14 +32,14 @@ watchDebounced(searchInput, async () => {
 <template>
   <main class="container max-w-5xl mx-auto p-4 pb-8">
 
-    <div class="text-sm breadcrumbs">
+    <div class="text-sm breadcrumbs mb-6">
       <ul>
         <li><RouterLink to="/">Home</RouterLink></li>
         <li>Products</li>
       </ul>
     </div>
     
-    <input type="text" v-model="searchInput" placeholder="Search products..." class="input input-bordered mt-6 mb-4 w-full max-w-md" />
+    <input type="text" v-model="searchInput" placeholder="Search products..." class="input input-bordered mb-4 w-full max-w-md" />
 
     <div class="flex justify-center p-8" v-if="isLoading"><span class="loading loading-spinner loading-lg"></span></div>
     

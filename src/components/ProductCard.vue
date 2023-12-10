@@ -12,7 +12,7 @@ const currencyFormatter = useCurrencyFormatter();
 </script>
 
 <template>
-  <div class="border rounded-lg overflow-hidden">
+  <div class="rounded-lg shadow-sm overflow-hidden bg-base-100">
     <div class="w-full h-48 relative">
       <div class="absolute -z-10 animate-pulse flex items-center justify-center w-full h-full mb-4 bg-gray-300 dark:bg-gray-700">
         <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">

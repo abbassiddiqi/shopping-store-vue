@@ -62,7 +62,7 @@ const handleDecrement = () => {
 <template>
   <main class="container max-w-5xl mx-auto p-4 pb-8 pt-4">
 
-    <div class="text-sm breadcrumbs mb-8">
+    <div class="text-sm breadcrumbs mb-6">
       <ul>
         <li><RouterLink to="/">Home</RouterLink></li>
         <li><RouterLink to="/">Products</RouterLink></li>
@@ -72,7 +72,7 @@ const handleDecrement = () => {
 
     <div class="flex justify-center p-8" v-if="isLoading"><span class="loading loading-spinner loading-lg"></span></div>
 
-    <div class="grid gap-8 grid-cols-1 md:grid-cols-2" v-if="product && !isLoading">
+    <div class="grid gap-8 grid-cols-1 md:grid-cols-2 bg-base-100 p-4 md:p-8 shadow-sm rounded-lg" v-if="product && !isLoading">
 
       <div class="flex justify-center items-center relative">
         <img class="max-h-96" :src="product.images[0]" v-if="product.images.length > 0" alt="Product Image" />
