@@ -16,11 +16,16 @@ export const useProductsStore = defineStore('products', () => {
     product.value = await productsService.getProduct(id);
   }
 
+  const searchProducts = async (query: string) => {
+    products.value = await productsService.searchProducts(query);
+  }
+
   return {
     product,
     products,
     fetchProduct,
     fetchProducts,
+    searchProducts,
   }
 }, {
   persist: true

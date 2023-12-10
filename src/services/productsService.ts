@@ -27,4 +27,9 @@ export class ProductsService {
     const response = await axios.get(`${this.baseUrl}/${id}`);
     return response.data;
   }
+
+  async searchProducts(query: string): Promise<Product[]> {
+    const response = await axios.get(`${this.baseUrl}/search`, { params: { q: query }});
+    return response.data.products;
+  }
 }

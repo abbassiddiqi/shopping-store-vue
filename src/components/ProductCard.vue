@@ -9,8 +9,6 @@ defineProps<{
 
 const currencyFormatter = useCurrencyFormatter();
 
-console.log(currencyFormatter.format(5462));
-
 </script>
 
 <template>
