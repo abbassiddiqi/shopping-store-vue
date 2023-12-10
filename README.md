@@ -30,7 +30,7 @@ It features a clean user interface with functionalities like product listings pa
 3. Run the development server:
 
     ```sh
-    npm run serve
+    npm run dev
     ```
 
 ## License
