@@ -23,7 +23,7 @@ const currencyFormatter = useCurrencyFormatter();
       <RouterLink :to="`/products/${product.id}`"><img class="w-full h-full object-cover" :src="product.images[0]" alt="Product Image" /></RouterLink>
     </div>
     <div class="p-4">
-      <RouterLink :to="`/products/${product.id}`" class="font-medium mb-2 overflow-hidden text-ellipsis whitespace-nowrap">{{ product.title }}</RouterLink>
+      <RouterLink :to="`/products/${product.id}`" class="font-medium mb-2 line-clamp-1">{{ product.title }}</RouterLink>
       <div class="flex justify-between items-center text-gray-600">
         <span class="">{{ currencyFormatter.format(product.price) }}</span>
         <span class="text-sm">{{ parseFloat(product.rating.toString()).toFixed(2) }} ★</span>
