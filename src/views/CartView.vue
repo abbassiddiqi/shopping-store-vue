@@ -37,7 +37,7 @@ const handleDecrement = (productId: number) => {
 
     <div class="text-center mt-2" v-if="items.length == 0">There are no products in the cart.</div>
 
-    <div class="bg-base-100 p-4 md:p-8 rounded-lg shadow-sm" v-else>
+    <div class="bg-base-100 p-4 md:p-8 rounded-lg shadow" v-else>
       <div class="overflow-x-auto">
         <table class="table cart-table">
           <!-- head -->
