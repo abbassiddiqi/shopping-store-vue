@@ -7,7 +7,7 @@ import { useCurrencyFormatter } from '@/composables/currencyFormatter';
 const cartStore = useCartStore();
 const currencyFormatter = useCurrencyFormatter();
 
-const { items, total } = storeToRefs(cartStore);
+const { items, total, grandTotal, salesTax } = storeToRefs(cartStore);
 
 </script>
 
@@ -120,11 +120,11 @@ const { items, total } = storeToRefs(cartStore);
               </div>
               <div class="flex mb-2 text-gray-600">
                 <div class="flex-grow">Sales Tax</div>
-                <div>$0</div>
+                <div>{{ currencyFormatter.format(salesTax) }}</div>
               </div>
               <div class="flex font-bold">
                 <div class="flex-grow">Grand Total</div>
-                <div>{{ currencyFormatter.format(total) }}</div>
+                <div>{{ currencyFormatter.format(grandTotal) }}</div>
               </div>
             </div>
           </div>

@@ -17,7 +17,15 @@ export const useCartStore = defineStore('cart', () => {
       sum += (item.product.price * item.quantity);
     });
     return sum;
-  })
+  });
+
+  const salesTax = computed(() => {
+    return total.value * 5 / 100;
+  });
+
+  const grandTotal = computed(() => {
+    return total.value + salesTax.value;
+  });
 
   const addToCart = (product: Product, quantiy: number): void => {
     items.value.push({
@@ -57,6 +65,8 @@ export const useCartStore = defineStore('cart', () => {
   return {
     total,
     items,
+    salesTax,
+    grandTotal,
     addToCart,
     removeFromCart,
     increaseQuantity,

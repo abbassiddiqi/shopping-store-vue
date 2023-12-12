@@ -9,7 +9,7 @@ import QuantityButton from '@/components/QuantityButton.vue';
 const cartStore = useCartStore();
 const currencyFormatter = useCurrencyFormatter();
 
-const { items, total } = storeToRefs(cartStore);
+const { items, total, grandTotal, salesTax } = storeToRefs(cartStore);
 
 function removeProduct(product: Product) {
   cartStore.removeFromCart(product);
@@ -137,11 +137,11 @@ const handleDecrement = (productId: number) => {
             </tr>
             <tr>
               <th class="font-medium">Sales Tax:</th>
-              <td class="text-right">$0</td>
+              <td class="text-right">{{ currencyFormatter.format(salesTax) }}</td>
             </tr>
             <tr>
               <th class="font-medium text-lg">Grand total:</th>
-              <td class="font-medium text-lg text-right">{{ currencyFormatter.format(total) }}</td>
+              <td class="font-medium text-lg text-right">{{ currencyFormatter.format(grandTotal) }}</td>
             </tr>
           </tbody>
         </table>
