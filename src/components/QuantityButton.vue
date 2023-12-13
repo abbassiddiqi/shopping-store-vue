@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center max-w-fit border border-gray-100 rounded-lg overflow-hidden">
+  <div class="flex items-center max-w-fit border border-gray-100 rounded-lg overflow-hidden touch-manipulation">
     <button class="btn btn-sm h-9 w-9 btn-square rounded-none" @click="decrement" :disabled="quantity === 1">-</button>
     <Transition name="quantity-scale" mode="out-in">
       <span :key="quantity" class="w-full text-center px-4 select-none quantity-animation">{{ quantity }}</span>
