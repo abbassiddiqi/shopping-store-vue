@@ -4,6 +4,8 @@ An online shopping store built with Vue.js 3 using the composition API.
 
 It features a clean user interface with functionalities like product listings page, detailed product pages, a cart system, and a checkout process.
 
+![Website Preview](./preview.png?raw=true)
+
 ## Technologies Used
 
 - Vue.js 3 (with Composition API)
